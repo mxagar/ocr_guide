@@ -15,6 +15,7 @@ Table of contents:
   - [1. Introduction](#1-introduction)
     - [Installation](#installation)
     - [Course Material](#course-material)
+    - [Notebook](#notebook)
 
 ## 1. Introduction
 
@@ -79,5 +80,7 @@ An alternative is to download those packages manually to a local folder and then
 The material from the course [Optical Character Recognition (OCR) in Python](https://www.udemy.com/course/ocr-optical-character-recognition-in-python/) can be downloaded from this [Drive Link](https://drive.google.com/drive/folders/19b4RUoVMZ_lYeHn0lE2ueyJk36cm9rGB?usp=sharing).
 
 I have the material locally on the folder [`../material/`](../material/), but not committed to the repository.
+
+### Notebook
 
 

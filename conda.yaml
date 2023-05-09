@@ -1,0 +1,34 @@
+name: ocr
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - requests
+  - pip
+  - jupyter
+  - jupyterlab
+  - pytorch
+  - scikit-learn
+  - scipy
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - cython
+  - nltk
+  - numba
+  - pillow
+  - posix
+  - pip:
+      - protobuf
+      - chardet
+      - opencv-python
+      - opencv-contrib-python
+      - wandb
+      - autopep8
+      - joblib
+      - pytest
+      - setuptools
+      - wheel
+      - spacy

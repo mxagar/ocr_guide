@@ -1,4 +1,4 @@
-# OCR Guide: Tesseract
+# OCR Guide: Basics and Tesseract
 
 This repository contains a guide and example code on Optical Character Recognition (OCR).
 
@@ -11,11 +11,12 @@ This sub-folder deals with OCR in general and the package Tesseract, which is th
 
 Table of contents:
 
-- [OCR Guide: Tesseract](#ocr-guide-tesseract)
+- [OCR Guide: Basics and Tesseract](#ocr-guide-basics-and-tesseract)
   - [1. Introduction](#1-introduction)
     - [Installation](#installation)
     - [Course Material](#course-material)
-    - [Notebook](#notebook)
+  - [2. OCR with Python and Tesseract](#2-ocr-with-python-and-tesseract)
+    - [3. Image Pre-Processing](#3-image-pre-processing)
 
 ## 1. Introduction
 
@@ -81,6 +82,71 @@ The material from the course [Optical Character Recognition (OCR) in Python](htt
 
 I have the material locally on the folder [`../material/`](../material/), but not committed to the repository.
 
-### Notebook
+## 2. OCR with Python and Tesseract
 
+Links:
+
+- [Colab notebook](https://colab.research.google.com/drive/1SGqZJeatvKqxS09rDPtoMtmgzQ1q9mwW?usp=sharing)
+- [Material](https://drive.google.com/drive/folders/19b4RUoVMZ_lYeHn0lE2ueyJk36cm9rGB?usp=sharing)
+
+Contents of the section notebook [`01_OCR_with_Python_and_Tesseract.ipynb`](./lab/01_OCR_with_Python_and_Tesseract.ipynb):
+
+- Plot images
+- Download and use specific language packages
+- Tesseract configuration parameters: folder of packages, language, page segmentation modes (PSM: text block, one word, etc.), etc.
+- Plot detected bboxes on images + text (with specific language symbols): custom functions defined
+- Usage of the most common API calls:
+
+    ```python
+    # Extract string
+    pytesseract.image_to_string(...)
+
+    # Extract orientation and script information
+    pytesseract.image_to_osd(...)
+
+    # Extrac text and additional info: type of text, confidence, bbox, etc.
+    pytesseract.image_to_data(...)
+    ```
+
+### 3. Image Pre-Processing
+
+Links:
+
+- [Colab notebook](https://colab.research.google.com/drive/13KCAIRvoEwrvnNgTWyW_eITVjEpnQXdO?usp=sharing)
+- [Material](https://drive.google.com/drive/folders/19b4RUoVMZ_lYeHn0lE2ueyJk36cm9rGB?usp=sharing)
+
+Contents of the section notebook [`02_OCR_with_Python_Pre_processing.ipynb`](./lab/02_OCR_with_Python_Pre_processing.ipynb):
+
+- Thresholding: Simple/Binary (global), Otsu (global, bi-modal), Adaptive (local, with Gaussian)
+- Color inversion: to white background and dark text
+- Image resizing
+- Morphological operations for noise removal: Erosion, Dilation, Opening (= Erosion + Dilation), Closing (= Dilation + Erosion)
+- Filters: Mean, Gaussian, Median, Bilateral
+
+Summary of the API calls to OpenCV:
+
+```python
+# Gray image
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Thresholding
+cv2.threshold(...)
+cv2.adaptiveThreshold(...)
+
+# Inversion
+invert = 255 - gray
+
+# Resizing
+increase = cv2.resize(...)
+
+# Morphological operations
+erosion = cv2.erode(gray, np.ones((3,3), np.uint8))
+dilation = cv2.dilate(gray, np.ones((3,3), np.uint8))
+
+# Filters
+average_blur = cv2.blur(gray, (5,5))
+gaussian_blur = cv2.GaussianBlur(gray, (5,5), 0)
+median_blur = cv2.medianBlur(gray, 3)
+bilateral_filter = cv2.bilateralFilter(gray, 15, 55, 45)
+```
 

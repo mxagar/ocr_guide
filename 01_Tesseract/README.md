@@ -17,6 +17,7 @@ Table of contents:
     - [Course Material](#course-material)
   - [2. OCR with Python and Tesseract](#2-ocr-with-python-and-tesseract)
     - [3. Image Pre-Processing](#3-image-pre-processing)
+    - [4. EAST for Natural Scenes](#4-east-for-natural-scenes)
 
 ## 1. Introduction
 
@@ -149,4 +150,42 @@ gaussian_blur = cv2.GaussianBlur(gray, (5,5), 0)
 median_blur = cv2.medianBlur(gray, 3)
 bilateral_filter = cv2.bilateralFilter(gray, 15, 55, 45)
 ```
+
+### 4. EAST for Natural Scenes
+
+- [Colab notebook](https://colab.research.google.com/drive/1L_sGCRL6itW_v-Jk3TXNR68UHC39Fbah?usp=sharing)
+- [Material](https://drive.google.com/drive/folders/19b4RUoVMZ_lYeHn0lE2ueyJk36cm9rGB?usp=sharing)
+- [Paper](https://arxiv.org/pdf/1704.03155v2.pdf)
+
+Contents of the section notebook [`03_OCR_with_Python_Text_detection_with_EAST.ipynb`](./lab/03_OCR_with_Python_Text_detection_with_EAST.ipynb):
+
+EAST = Efficient and Accurate Scene Text Detector (2017).
+
+We need to distinguish 2 concepts:
+
+1. Text detection or localization
+2. Character recognition
+
+Tesseract does both, but the text detection/localization works well only on structured/controled scenes. EAST is nowadays the best approach to efficiently detect text on unstructured scene images. When EAST is applied, the workflow is the following:
+
+1. Detect/ocalize text with OpenCV using the EAST network.
+2. Take the bounding boxes and apply Tesseract to recognize the string in them.
+
+EAST is a fully convolutional neural network (FCN) which returns a score map and bouding box candidates which might contain text ROIs. Then, those ROIs are collapsed using non-maximum supression (NMS).
+
+![EAST Architecture](./../assets/EAST_architecture.jpg)
+
+The EAST model takes a 320x320 RGB image and returns a 80x80 (1) score/confidence map and a (2) map with the bounding box values. The decoding of the bounding boxes is explained in the paper and in [this Stackoverflow post](https://stackoverflow.com/questions/55583306/decoding-geometry-output-of-east-text-detection).
+
+![EAST Bounding Boxes](./../assets/EAST_bboxes.jpg)
+
+The notebook has the following contents:
+
+- An image of a natural scene is loaded, resized to 320x320 and converted to blob.
+- The weights of the EAST architecture are loaded to the OpenCV DNN module.
+- The image is passed to the model; we obtain `scores` and `geometries`: 80x80 maps of confidences and bboxes, respectively.
+- BBox geometries are extracted and non-maximum supression is applied.
+  - NOTE: it seems that the model handles oriented bounding boxes, but these are simplified to AABBs.
+- The ROIs are upscaled and Tesseract is applied on them to get the text.
+
 

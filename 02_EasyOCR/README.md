@@ -16,7 +16,8 @@ Table of contents:
 
 ## 1. Introduction
 
-:construction:
+Links:
 
-TBD.
+- EasyOCR is an Open Source library maintained by [Jaded AI](https://jaided.ai/)
+- [Easy OCR Github](https://github.com/JaidedAI/EasyOCR)
 

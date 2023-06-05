@@ -1,4 +1,4 @@
-# OCR Guide: EasyOCR
+# OCR Guide: Projects
 
 This repository contains a guide and example code on Optical Character Recognition (OCR).
 
@@ -7,11 +7,11 @@ I compiled this material after trying several tutorials and courses; I list the 
 - [Udemy: Optical Character Recognition (OCR) in Python](https://www.udemy.com/course/ocr-optical-character-recognition-in-python/)
 - [PyImageSearch: Tutorials on OCR](https://pyimagesearch.com/)
 
-This sub-folder deals with the package EasyOCR.
+This sub-folder contains interesting projects and use-cases.
 
 Table of contents:
 
-- [OCR Guide: EasyOCR](#ocr-guide-easyocr)
+- [OCR Guide: Projects](#ocr-guide-projects)
   - [1. Introduction](#1-introduction)
 
 ## 1. Introduction
@@ -19,4 +19,3 @@ Table of contents:
 :construction:
 
 TBD.
-

@@ -9,10 +9,16 @@ I compiled this material after trying several tutorials and courses; I list the 
 
 The repository is organized in theme-related folders and each of them contains (1) a guide in Markdown which explains everything (including setup & Co.) and (2) example code.
 
-- [`01_Tesseract`](01_Tesseract)
-- [`02_EasyOCR`](02_EasyOCR)
-- [`03_Video`](03_Video)
-- [`04_ExampleProjects`](04_ExampleProjects)
+- [`01_Tesseract`](./01_Tesseract)
+  - Tesseract: installation, usage
+  - Image processing for OCR
+  - EAST + OpenCV + Tesseract for OCR in natural scenarios
+  - OCR in videos
+- [`02_EasyOCR`](./02_EasyOCR)
+- [`03_Keras_CNN`](./03_Keras_CNN)
+- [`04_Projects`](./04_Projects)
+
+The folder `01` is probably the most important, since the other introduce additional packages and extra examples.
 
 If you are interested in other related guides:
 

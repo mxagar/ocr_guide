@@ -7,7 +7,7 @@ I compiled this material after trying several tutorials and courses; I list the 
 - [Udemy: Optical Character Recognition (OCR) in Python](https://www.udemy.com/course/ocr-optical-character-recognition-in-python/)
 - [PyImageSearch: Tutorials on OCR](https://pyimagesearch.com/)
 
-This sub-folder deals with OCR in general and the package Tesseract, which is the most common python library for OCR.
+This sub-folder deals with OCR in general and the package Tesseract, which is the most common python library for OCR. This module alone should suffice to start working with OCR.
 
 Table of contents:
 
@@ -16,8 +16,9 @@ Table of contents:
     - [Installation](#installation)
     - [Course Material](#course-material)
   - [2. OCR with Python and Tesseract](#2-ocr-with-python-and-tesseract)
-    - [3. Image Pre-Processing](#3-image-pre-processing)
-    - [4. EAST for Natural Scenes](#4-east-for-natural-scenes)
+  - [3. Image Pre-Processing](#3-image-pre-processing)
+  - [4. EAST for Natural Scenes](#4-east-for-natural-scenes)
+  - [5. OCR in Videos](#5-ocr-in-videos)
 
 ## 1. Introduction
 
@@ -109,7 +110,7 @@ Contents of the section notebook [`01_OCR_with_Python_and_Tesseract.ipynb`](./la
     pytesseract.image_to_data(...)
     ```
 
-### 3. Image Pre-Processing
+## 3. Image Pre-Processing
 
 Links:
 
@@ -151,7 +152,7 @@ median_blur = cv2.medianBlur(gray, 3)
 bilateral_filter = cv2.bilateralFilter(gray, 15, 55, 45)
 ```
 
-### 4. EAST for Natural Scenes
+## 4. EAST for Natural Scenes
 
 - [Colab notebook](https://colab.research.google.com/drive/1L_sGCRL6itW_v-Jk3TXNR68UHC39Fbah?usp=sharing)
 - [Material](https://drive.google.com/drive/folders/19b4RUoVMZ_lYeHn0lE2ueyJk36cm9rGB?usp=sharing)
@@ -179,6 +180,11 @@ The EAST model takes a 320x320 RGB image and returns a 80x80 (1) score/confidenc
 
 ![EAST Bounding Boxes](./../assets/EAST_bboxes.jpg)
 
+**IMPORTANT**: We need the model, which can be downloaded from different sources:
+
+- [Udemy tutorial](https://drive.google.com/drive/folders/19b4RUoVMZ_lYeHn0lE2ueyJk36cm9rGB?usp=sharing)
+- [PyImageSearch tutorial](https://pyimagesearch-code-downloads.s3-us-west-2.amazonaws.com/opencv-text-detection/opencv-text-detection.zip)
+
 The notebook has the following contents:
 
 - An image of a natural scene is loaded, resized to 320x320 and converted to blob.
@@ -188,4 +194,14 @@ The notebook has the following contents:
   - NOTE: it seems that the model handles oriented bounding boxes, but these are simplified to AABBs.
 - The ROIs are upscaled and Tesseract is applied on them to get the text.
 
+Note: PyImageSearch has a very similar tutorial:
 
+- [Blog post / tutorial](https://www.pyimagesearch.com/2018/08/20/opencv-text-detection-east-text-detector/?_ga=2.242979714.1677396935.1685958200-1020982194.1685524223)
+- [Source code](https://pyimagesearch-code-downloads.s3-us-west-2.amazonaws.com/opencv-text-detection/opencv-text-detection.zip)
+- [Google Colab](https://colab.research.google.com/drive/1J9R4sUQwFJ8eQRcnOIqWmoxDKNeIOsY4?usp=sharing)
+
+## 5. OCR in Videos
+
+:construction:
+
+TBD.

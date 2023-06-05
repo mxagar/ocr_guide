@@ -1,0 +1,4 @@
+Zhou_EAST_OCR_2017.pdf
+	EAST: An Efficient and Accurate Scene Text Detector
+	Xinyu Zhou, Cong Yao, He Wen, Yuzhi Wang, Shuchang Zhou, Weiran He, and Jiajun Liang
+	2017

@@ -168,3 +168,7 @@ pyimagesearch_tutorials
 material/*
 tessdata
 literature/*.pdf
+03_Keras_CNN/*.zip
+03_Keras_CNN/*.model
+03_Keras_CNN/*.csv
+03_Keras_CNN/A_Z Handwritten Data

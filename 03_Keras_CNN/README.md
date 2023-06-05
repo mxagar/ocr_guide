@@ -19,8 +19,8 @@ Table of contents:
 
 In this section/module, CNNs are trained with Tensorflow/Keras. The training datasets are:
 
-- [MNIST]()
-- [Kaggle A-Z]()
+- [MNIST](https://www.kaggle.com/datasets/hojjatk/mnist-dataset)
+- [Kaggle A-Z](https://iaexpert.academy/arquivos/alfabeto_A-Z.zip)
 
 Then, the trained networks are used to recognize custom hand-written characters.
 

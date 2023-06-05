@@ -28,20 +28,26 @@ Then, the trained networks are used to recognize custom hand-written characters.
 
 The notebooks are self-explanatory:
 
-- []()
-- []()
+- [`01_Custom_OCR_training_the_neural_network.ipynb`](./01_Custom_OCR_training_the_neural_network.ipynb)
+- [`02_Custom_OCR_Text_recognition.ipynb`](./02_Custom_OCR_Text_recognition.ipynb)
 
 The first carries out these steps:
 
-- A
-- B
+- Both number and letter datasets are loaded and concatenated.
+- A weight is computed for each symbol, since the dataset is quite imbalanced.
+- A CNN is defined (138k params) and trained and evaluated.
+- The network is saved to disk.
 
 The second carries out these steps:
 
-- A
-- B
+- The trained network is loaded.
+- A target image is loaded.
+- The image is preprocessed to obtain each single character on it in a separate ROI:
+  - Image is thresholded
+  - Edges of the letter blobs are found
+  - Contours of the dilated edges are found
+  - Bounding boxes of the disconnedted contours are found
+  - For each bounding box, a letter ROI is generated
+- We take all ROIs and feed them one by one to our model: the symbol class is predicted.
 
-Notes:
 
-- A
-- B

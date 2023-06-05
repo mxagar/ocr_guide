@@ -27,6 +27,7 @@ dependencies:
       - chardet
       - opencv-python
       - opencv-contrib-python
+      - easyocr
       - wandb
       - autopep8
       - joblib

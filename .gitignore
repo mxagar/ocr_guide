@@ -173,3 +173,4 @@ literature/*.pdf
 03_Keras_CNN/*.csv
 03_Keras_CNN/A_Z Handwritten Data
 03_Keras_CNN/network
+*.avi

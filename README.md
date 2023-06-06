@@ -9,14 +9,17 @@ I compiled this material after trying several tutorials and courses; I list the 
 
 The repository is organized in theme-related folders and each of them contains (1) a guide in Markdown which explains everything (including setup & Co.) and (2) example code.
 
-- [`01_Tesseract`](./01_Tesseract)
+- [`01_Tesseract`](./01_Tesseract): main folder with all the necessary basics for OCR with Tesseract.
   - Tesseract: installation, usage
   - Image processing for OCR
-  - EAST + OpenCV + Tesseract for OCR in natural scenarios
-  - OCR in videos
-- [`02_EasyOCR`](./02_EasyOCR)
-- [`03_Keras_CNN`](./03_Keras_CNN)
-- [`04_Projects`](./04_Projects)
+  - EAST (detection) + OpenCV (image processing) + Tesseract (recognition) for OCR in natural scenarios
+  - OCR in videos: modularization of all learned functions into a video application
+- [`02_EasyOCR`](./02_EasyOCR): package which detects very easily text in natural scenes.
+- [`03_Keras_CNN`](./03_Keras_CNN): training of a Keras-CNN model to detect handwritten digits.
+- [`04_Projects`](./04_Projects):
+  - Project 1: specific terms are searched and highlighted in book images.
+  - Project 2: processing (alignment, thresholding, etc.) of a receipt to apply OCR.
+  - Project 3: license plate detection.
 
 The folder `01` is probably the most important, since the other introduce additional packages and extra examples.
 

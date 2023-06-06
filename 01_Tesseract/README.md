@@ -110,6 +110,14 @@ Contents of the section notebook [`01_OCR_with_Python_and_Tesseract.ipynb`](./la
     pytesseract.image_to_data(...)
     ```
 
+Note that:
+
+- Tesseract expectes nice and clear images, either GRAY or RGB, where the text is clearly legible; additionally, we should specify the PSM correctly for detection and recognition.
+- If the above is not satisfied, we need to:
+  - Apply image processing: filter, thresholding, edges, contours, etc.
+  - Use EAST for text detection, then crop ROIs and process them for Tesseract.
+- Another option for natural scenes is EasyOCR: this package does the image pre-processing and text detection automatically.
+
 ## 3. Image Pre-Processing
 
 Links:
@@ -150,6 +158,27 @@ average_blur = cv2.blur(gray, (5,5))
 gaussian_blur = cv2.GaussianBlur(gray, (5,5), 0)
 median_blur = cv2.medianBlur(gray, 3)
 bilateral_filter = cv2.bilateralFilter(gray, 15, 55, 45)
+
+# Edges and contours for bounding box detection
+edges = cv2.Canny(dilation, 40, 150)
+
+# One way of isolating disconnected blobs consists in computing
+# the contours of the blobs (= letters); then, we can find the bounding box of the
+# contours. To that end, we find the edges first, then contours, and finally the bboxes.
+# Another option is to use cv2.connectedComponentsWithStats() directly
+# on the thresholded image.
+def find_contours(img):
+    # Note that we are getting external contours
+    # We need to take into account all possible paramaters
+    # of findContours()...
+    conts = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    conts = imutils.grab_contours(conts)
+    # Note we are sorting from left-to-right
+    conts = sort_contours(conts, method = 'left-to-right')[0]
+    
+    return conts
+
+conts = find_contours(dilation.copy())
 ```
 
 ## 4. EAST for Natural Scenes
@@ -202,6 +231,13 @@ Note: PyImageSearch has a very similar tutorial:
 
 ## 5. OCR in Videos
 
-:construction:
+Notebook: [`04_OCR_in_Videos.ipynb`](./lab/04_OCR_in_Videos.ipynb).
 
-TBD.
+In this notebook, nothing really new is shown, but everything is packed to detect and display text in video frames. Therefore, the major interest of the notebook lies on the techniques used to modularise and run everything.
+
+The video was recorded on a car in a bussy city; traffic signals and similar object are detected. The video interface is based on OpenCV: basically, a loop in which frames are taken from a `VideoCapture` object.
+
+Two versions are programmed:
+
+- First, video frames are processed by EAST and then cropped ROIs passed to Tesseract.
+- Everything is handled by EasyOCR
